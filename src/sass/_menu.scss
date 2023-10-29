@@ -1,0 +1,20 @@
+.menu {
+  .question {
+    font-weight: 500;
+  }
+  .answers {
+    list-style: none;
+    &__element {
+      margin: 5% 0;
+      padding: 3%;
+      border: 1px solid $main-color;
+      border-radius: 5px;
+      transition: 0.6s;
+      cursor: pointer;
+      &:hover {
+        background-color: $main-color;
+        color: white;
+      }
+    }
+  }
+}
