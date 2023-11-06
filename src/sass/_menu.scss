@@ -15,6 +15,12 @@
         background-color: $main-color;
         color: white;
       }
+      &.correct {
+        background-color: #a2eabb;
+      }
+      &.incorrect {
+        background-color: #f69291;
+      }
     }
   }
 }
