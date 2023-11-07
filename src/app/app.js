@@ -60,16 +60,22 @@ let questions = [
     correctAnswer: 1,
   },
 ];
-
+const questionsTemp = questions.map((x) => x);
 const liButtons = document.querySelectorAll('.answers__element');
 const question = document.querySelector('.question');
 const buttonNext = document.querySelector('footer button');
+const buttonReset = document.querySelector('footer .reset');
+const list = document.querySelector('.answers');
 
 let questionNumber = 1;
+let score = 0;
+let questionIndex = randomQuestion(questions.length);
 
 function isCorrect(i, q) {
-  if (i === questions[q].correctAnswer) liButtons[i].classList.add('correct');
-  else {
+  if (i === questions[q].correctAnswer) {
+    liButtons[i].classList.add('correct');
+    score++;
+  } else {
     liButtons[questions[q].correctAnswer].classList.add('correct');
     liButtons[i].classList.add('incorrect');
   }
@@ -84,14 +90,42 @@ function randomQuestion(l) {
   let index = Math.floor(Math.random() * l);
   return index;
 }
-
 function initQuestion() {
-  let questionIndex = randomQuestion(questions.length);
-  console.log(questionIndex);
+  questionIndex = randomQuestion(questions.length);
   question.textContent = `${questionNumber}. ${questions[questionIndex].question}`;
   liButtons.forEach((button, i) => {
+    button.style.pointerEvents = 'auto';
+    button.classList.remove('correct');
+    button.classList.remove('incorrect');
     button.textContent = questions[questionIndex].answers[i];
-    button.addEventListener('click', () => isCorrect(i, questionIndex));
   });
 }
+function reset() {
+  questions = questionsTemp.map((x) => x);
+  list.classList.add('active');
+  buttonReset.classList.remove('active');
+  questionNumber = 1;
+  score = 0;
+  initQuestion();
+}
+function next() {
+  if (questionNumber === 11) {
+    list.classList.remove('active');
+    buttonNext.classList.remove('active');
+    buttonReset.classList.add('active');
+    question.textContent = `You scored ${score} out of ${questionNumber - 1}!`;
+  } else {
+    initQuestion();
+    buttonNext.classList.remove('active');
+  }
+}
+
+buttonNext.addEventListener('click', next);
+
+liButtons.forEach((button, i) => {
+  button.addEventListener('click', () => isCorrect(i, questionIndex));
+});
+
+buttonReset.addEventListener('click', reset);
+
 initQuestion();
