@@ -18,6 +18,9 @@ footer {
       background-color: #fff;
       color: $main-color;
     }
+    &.reset {
+      margin-top: 10%;
+    }
     &.active {
       display: inline;
     }
