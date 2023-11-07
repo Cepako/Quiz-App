@@ -3,7 +3,11 @@
     font-weight: 500;
   }
   .answers {
+    display: none;
     list-style: none;
+    &.active {
+      display: block;
+    }
     &__element {
       margin: 5% 0;
       padding: 3%;
