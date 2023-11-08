@@ -20,6 +20,10 @@ footer {
     }
     &.reset {
       margin-top: 10%;
+
+      @media (max-width: 600px) {
+        width: 70%;
+      }
     }
     &.active {
       display: inline;

@@ -16,5 +16,13 @@ body {
     border-radius: 15px;
     padding: 30px;
     background-color: white;
+    @media (max-width: 600px) {
+      width: 80%;
+      min-height: 50%;
+    }
+    @media (max-width: 1000px) {
+      width: 70%;
+      min-height: 50%;
+    }
   }
 }
