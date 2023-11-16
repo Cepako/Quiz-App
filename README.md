@@ -84,4 +84,4 @@ You can add your own questions
 - asnwers - four answers
 - correctAnswer - index of correct answer (index 0 = first answer is correct)
 
-Feedback and pull requests are warmly welcomed!
+Feedback and pull requests are warmly welcomed!☕💻
